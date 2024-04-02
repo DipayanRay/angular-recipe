@@ -15,17 +15,17 @@ export class DataStorageService
     storeRecipes()
     {
         const recipes = this.recipeService.getRecipes();
-        console.log('storeRecipes');
-        console.log(recipes);
-        // this.http.put('https://..../recipes.json', recipes)
-        // .subscribe(response => console.log(response));
+        // console.log('storeRecipes');
+        // console.log(recipes);
+        this.http.put('https://ng-course-recipe-book-89bc1-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json', recipes)
+        .subscribe(response => console.log(response));
     }
 
     fetchRecipes()
     {
         return this.http
         .get<Recipe[]>(
-          'https://..../recipes.json'
+          'https://ng-course-recipe-book-89bc1-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json'
         )
         .pipe(
           map(recipes => {
